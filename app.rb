@@ -16,16 +16,20 @@ get "/tweets.css" do
   content_type "text/css"
   tweets = client.user_timeline
   <<-CSS
-	@media screen and (-webkit-min-device-pixel-ratio: 0) {
+	  @media screen and (-webkit-min-device-pixel-ratio: 0) {
 
-	.tweet .copy:before {
-	  white-space: pre-wrap;
-	}
+	  .tweet .copy:before {
+	    white-space: pre-wrap;
+	  }
   CSS
   tweets.take(15).map.with_index do |tweet, i|
 	copy_text = tweet.text.delete("\t\r\n");
 	timestamp = tweet.created_at.strftime("%b %-d, %Y");
     <<-CSS
+	#tweet-#{i + 1} .avatar {
+      background: url("https://pbs.twimg.com/profile_images/897296139157987332/ikvdHhvb_normal.jpg");
+    }
+	
 	#tweet-#{i + 1} .name::before {
 	  content: "#{tweet.user.name}";
 	}
