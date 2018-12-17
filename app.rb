@@ -27,8 +27,8 @@ get "/tweets.css" do
 	timestamp = tweet.created_at.strftime("%b %-d, %Y");
     <<-CSS
 	#tweet-#{i + 1} .avatar {
-      background: url("https://pbs.twimg.com/profile_images/897296139157987332/ikvdHhvb_normal.jpg");
-    }
+	  background: url("https://pbs.twimg.com/profile_images/897296139157987332/ikvdHhvb_normal.jpg");
+	}
 	
 	#tweet-#{i + 1} .name::before {
 	  content: "#{tweet.user.name}";
